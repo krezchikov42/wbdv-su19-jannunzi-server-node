@@ -21,7 +21,8 @@
 		"choices": [
 			"Java Persistence API",
 			"Java Persisted Application",
-			"JavaScript Persistence API,JSON Persistent Associations"
+			"JavaScript Persistence API",
+			"JSON Persistent Associations"
 		],
 		"correct": 1
 	},
@@ -36,6 +37,6 @@
 			"Object Reflexive Model",
 			"Object Relational Mapping"
 		],
-		"correct": 4
-	},
+		"correct": 3
+	}
 ]
