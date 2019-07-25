@@ -25,10 +25,10 @@ module.exports = function(app) {
 			universityDao.findQuestionById(req.params['qid'])
 		)	
 	}
-	app.post("/api/students", createStudent);
-	app.delete("/api/students/:sid", deleteStudent);
-	app.get("/api/students", findAllStudents);
-	app.get("/api/students/:sid", findStudentById);
-	app.get("/api/questions", findAllQuestions);
-	app.get("/api/questions/:qid", findQuestionById);
+	app.post("/api/studentsa", createStudent);
+	app.get("/api/studentsa", findAllStudents);
+	app.get("/api/studentsa/:sid", findStudentById);
+	app.delete("/api/studentsa/:sid", deleteStudent);
+	app.get("/api/questionsa", findAllQuestions);
+	app.get("/api/questionsa/:qid", findQuestionById);
 }
