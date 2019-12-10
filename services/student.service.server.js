@@ -1,58 +1,41 @@
-var studentDao = require('..//daos/student.dao.server.js');
+var universityDao = require('../daos/university.dao.server');
 
 module.exports = function (app) {
 
-	console.log('student service server')
 
 	function createStudent(req, res) {
-		console.log('createStudent')
 		var student = req.body
-		console.log(student)
-		studentDao
-			.createStudent(student)
-			.then(response => res.send(response))
+		let students =  universityDao.createStudent(student)
+		res.json(students)
 	}
 
 	function findAllStudents(req, res) {
-		console.log('findAllStudents')
-		studentDao
-			.findAllStudents()
-			.then(students => res.send(students))
+		let students = universityDao.findAllStudents()
+		res.json(students)
 	}
 
 	function findStudentById(req, res) {
 		var studentId = req.params['sid'];
-		studentDao
-			.findStudentById(studentId)
-			.then(student => res.json(student))
-	}
-
-	function findStudentByUsername(req, res) {
-		var username = req.params['username'];
-		studentDao
-			.findStudentByUsername(username)
-			.then(student => res.json(student))
+		let student = universityDao.findStudentById(studentId)
+		res.json(student)
 	}
 
 	function updateStudent(req, res) {
 		var studentId = req.params['sid'];
 		var studentUpdates = req.body
-		studentDao
-			.updateStudent(studentId, studentUpdates)
-			.then(status => res.json(status))
+		let students = universityDao.updateStudent(studentId,studentUpdates)
+		res.json(students)
 	}
 
 	function deleteStudent(req, res) {
 		var studentId = req.params['sid'];
-		studentDao
-			.deleteStudent(studentId)
-			.then(status => res.json(status))
+		let students = universityDao.deleteStudent(studentId)
+		res.json(students)
 	}
 
-	app.post('/api/students', createStudent);
-	app.get('/api/students', findAllStudents);
-	app.get('/api/students/:sid', findStudentById);
-	app.get('/api/students/username/:username', findStudentByUsername);
-	app.put('/api/students/:sid', updateStudent);
-	app.delete('/api/students/:sid', deleteStudent);
+	app.post('/api/student', createStudent);
+	app.get('/api/student', findAllStudents);
+	app.get('/api/student/:sid', findStudentById);
+	app.put('/api/student/:sid', updateStudent);
+	app.delete('/api/student/:sid', deleteStudent);
 }
